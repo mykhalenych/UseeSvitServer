@@ -14,12 +14,12 @@ const app = express();
 
 const PORT = process.env.PORT || 8000;
 
-app.use(
-    cors({
-        origin: process.env.CLIENT_ORIGIN,
-        credentials: true,
-    }),
-);
+//app.use(
+  //  cors({
+       // origin: process.env.CLIENT_ORIGIN,
+       // credentials: true,
+   // }),
+//);
 
 app.use(express.static('client/build'));
 
