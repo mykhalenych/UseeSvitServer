@@ -13,7 +13,7 @@ import {sequelize} from './utils/db.js';
 const app = express();
 
 const PORT = process.env.PORT || 8000;
-
+console.log( process.env.POSTGRES_DB_LINK)
 app.use(
     cors({
         origin: 'http://localhost:3000',
