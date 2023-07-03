@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 8000;
 app.use(
     cors({
         origin: 'http://localhost:3000',
-        credentials: true,
+        credentials: false,
     }),
 );
 
@@ -36,4 +36,6 @@ app.use(errorMiddleware);
 
 sequelize.sync();
 
-app.listen(PORT);
+app.listen(PORT, () => {
+    console.log(`started on port: ${PORT}`)
+});
