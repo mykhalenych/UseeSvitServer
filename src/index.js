@@ -1,7 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
-import path from 'path';
 
 import {authRouter} from './routes/authRouter.js';
 import {errorMiddleware} from './middlewares/errorMiddleware.js';
@@ -12,21 +11,16 @@ import {sequelize} from './utils/db.js';
 
 const app = express();
 
-const PORT = process.env.PORT || 8000;
-console.log( process.env.POSTGRES_DB_LINK)
+const PORT = process.env.PORT || 5002;
+
 app.use(
     cors({
-        origin: ['https://useesvitclient.onrender.com', 'http://localhost:3000'] ,
+        origin: ['https://useesvitclient.onrender.com', 'http://localhost:3000'],
         credentials: false,
     }),
 );
 
 app.use(express.static('client/build'));
-
-app.get('*', (req, res) => {
-    console.log(__dirname, res);
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-});
 
 app.use(express.json());
 
@@ -37,5 +31,5 @@ app.use(errorMiddleware);
 sequelize.sync();
 
 app.listen(PORT, () => {
-    console.log(`started on port: ${PORT}`)
+    console.log(`started on port: ${PORT}`);
 });

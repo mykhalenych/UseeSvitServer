@@ -12,8 +12,9 @@ const getMe = async (req, res) => {
     const refreshToken = getToken(req);
 
     const user = await userService.checkIfExist(refreshToken);
+    const refreshedUserData = await userService.refreshUserData(user.id);
 
-    res.status(200).send(userService.normalize(user));
+    res.status(200).send(userService.normalize(refreshedUserData));
 };
 
 export default {getAll, getMe};

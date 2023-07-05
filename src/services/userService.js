@@ -91,6 +91,20 @@ const normalize = ({id, name, email, language, theme}) => {
     };
 };
 
+const refreshUserData = async (userId) => {
+    try {
+        const refreshedUser = await User.findByPk(userId);
+
+        if (!refreshedUser) {
+            throw new Error('User not found');
+        }
+
+        return refreshedUser;
+    } catch (error) {
+        throw new Error(`Error refreshing user data: ${error.message}`);
+    }
+};
+
 export default {
     getAllActive,
     getByEmail,
@@ -99,4 +113,5 @@ export default {
     checkIfExist,
     createUser,
     reset,
+    refreshUserData,
 };
