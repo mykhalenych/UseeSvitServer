@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5002;
 
 app.use(
     cors({
-        origin: ['https://useesvitclient.onrender.com', 'http://localhost:3000'],
+        origin: ['https://usee-svit.vercel.app', 'http://localhost:3000'],
         credentials: false,
     }),
 );
